@@ -1,0 +1,27 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+  
+variables:
+   major: 0
+   minor: 0
+name: $(major).$(minor)$(Rev:.r)
+
+steps:
+- task: Docker@2
+  inputs:
+    containerRegistry: 'docker registry'
+    repository: 'hardhu'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: "online-users-monitor:$(name)"
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceEndpoint: 'k8s vsm'
+    command: 'set'
+    arguments: 'image deployments/online-users-monitor hardhu.azurecr.io/vsm/online-users-monitor:$(name)'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
