@@ -13,15 +13,15 @@ steps:
 - task: Docker@2
   inputs:
     containerRegistry: 'docker registry'
-    repository: 'hardhu'
+    repository: 'online-users-monitor'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    tags: 'online-users-monitor:${name}'
+    tags: $(name)
 - task: Kubernetes@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'k8s vsm'
     command: 'set'
-    arguments: 'image deployments/online-users-monitor hardhu.azurecr.io/vsm/online-users-monitor:${name}'
+    arguments: 'image deployments/online-users-monitor hardhu.azurecr.io/vsm/online-users-monitor:$(name)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
