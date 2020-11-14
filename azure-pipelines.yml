@@ -7,7 +7,7 @@ pool:
 variables:
    major: 0
    minor: 0
-   ver: $[counter("", 0)]
+   ver: $[counter('', 0)]
    name: $(major).$(minor).$(ver)
 name: $(major).$(minor).$(ver)
 
