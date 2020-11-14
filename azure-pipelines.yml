@@ -7,8 +7,9 @@ pool:
 variables:
    major: 0
    minor: 0
-   name: $(major).$(minor)$(rev:r)
-name: $(major).$(minor)$(rev:r)
+   ver: $[counter("", 0)]
+   name: $(major).$(minor).$(ver)
+name: $(major).$(minor).$(ver)
 
 steps:
 - task: Docker@2
