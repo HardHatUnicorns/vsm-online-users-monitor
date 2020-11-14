@@ -7,9 +7,8 @@ pool:
 variables:
    major: 0
    minor: 0
-   revir: $(Rev:.r)
-   name: $(major).$(minor)$(revir)
-name: $(major).$(minor)$(revir)
+   name: $(major).$(minor)$(rev:r)
+name: $(major).$(minor)$(rev:r)
 
 steps:
 - task: Docker@2
