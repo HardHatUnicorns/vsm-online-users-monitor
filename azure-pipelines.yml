@@ -34,7 +34,10 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'k8s vsm'
+    namespace: 'vsm'
     command: 'set'
     arguments: 'image deployments/online-users-monitor online=hardhu.azurecr.io/vsm/online-users-monitor:$(name)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
+    azureSubscriptionEndpointForSecrets: 'Azure dla studentów(7a8dcb4c-7baf-4bb5-9807-9a189e848aec)'
+    azureContainerRegistry: 'hardhu.azurecr.io'
