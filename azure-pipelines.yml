@@ -35,6 +35,6 @@ steps:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceEndpoint: 'k8s vsm'
     command: 'set'
-    arguments: 'image deployments/online-users-monitor hardhu.azurecr.io/vsm/online-users-monitor:$(name)'
+    arguments: 'image deployments/online-users-monitor online=hardhu.azurecr.io/vsm/online-users-monitor:$(name)'
     secretType: 'dockerRegistry'
     containerRegistryType: 'Azure Container Registry'
